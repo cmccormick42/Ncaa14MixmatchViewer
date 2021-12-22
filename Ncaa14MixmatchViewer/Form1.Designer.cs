@@ -88,7 +88,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(713, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1247, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -103,7 +103,7 @@
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.loadToolStripMenuItem.Text = "Load...";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
@@ -221,7 +221,7 @@
             this.helmetsDataGrid.Name = "helmetsDataGrid";
             this.helmetsDataGrid.RowTemplate.Height = 25;
             this.helmetsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.helmetsDataGrid.Size = new System.Drawing.Size(595, 150);
+            this.helmetsDataGrid.Size = new System.Drawing.Size(1129, 150);
             this.helmetsDataGrid.TabIndex = 15;
             // 
             // helmetName
@@ -272,7 +272,7 @@
             this.jerseysDataGrid.Name = "jerseysDataGrid";
             this.jerseysDataGrid.RowTemplate.Height = 25;
             this.jerseysDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.jerseysDataGrid.Size = new System.Drawing.Size(595, 150);
+            this.jerseysDataGrid.Size = new System.Drawing.Size(1129, 150);
             this.jerseysDataGrid.TabIndex = 16;
             // 
             // dataGridViewTextBoxColumn1
@@ -328,7 +328,7 @@
             this.pantsDataGrid.Name = "pantsDataGrid";
             this.pantsDataGrid.RowTemplate.Height = 25;
             this.pantsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.pantsDataGrid.Size = new System.Drawing.Size(595, 150);
+            this.pantsDataGrid.Size = new System.Drawing.Size(1129, 150);
             this.pantsDataGrid.TabIndex = 17;
             // 
             // dataGridViewTextBoxColumn5
@@ -378,7 +378,7 @@
             this.shoesDataGrid.Name = "shoesDataGrid";
             this.shoesDataGrid.RowTemplate.Height = 25;
             this.shoesDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.shoesDataGrid.Size = new System.Drawing.Size(595, 150);
+            this.shoesDataGrid.Size = new System.Drawing.Size(1129, 150);
             this.shoesDataGrid.TabIndex = 18;
             // 
             // dataGridViewTextBoxColumn9
@@ -428,7 +428,7 @@
             this.socksDataGrid.Name = "socksDataGrid";
             this.socksDataGrid.RowTemplate.Height = 25;
             this.socksDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.socksDataGrid.Size = new System.Drawing.Size(595, 150);
+            this.socksDataGrid.Size = new System.Drawing.Size(1129, 150);
             this.socksDataGrid.TabIndex = 19;
             // 
             // dataGridViewTextBoxColumn13
@@ -478,7 +478,7 @@
             this.glovesDataGrid.Name = "glovesDataGrid";
             this.glovesDataGrid.RowTemplate.Height = 25;
             this.glovesDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.glovesDataGrid.Size = new System.Drawing.Size(595, 150);
+            this.glovesDataGrid.Size = new System.Drawing.Size(1129, 150);
             this.glovesDataGrid.TabIndex = 20;
             // 
             // dataGridViewTextBoxColumn17
@@ -516,7 +516,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 1127);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.glovesDataGrid);
             this.Controls.Add(this.socksDataGrid);
             this.Controls.Add(this.shoesDataGrid);

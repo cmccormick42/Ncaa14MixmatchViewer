@@ -348,7 +348,84 @@ namespace Ncaa14MixmatchViewer
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DeleteCells(helmetsDataGrid);
+        }
 
+        private void DeleteCells(DataGridView dataGrid)
+        {
+            foreach (DataGridViewCell cell in dataGrid.SelectedCells)
+            {
+                cell.Value = "";
+            }
+        }
+
+        private void HandlePasteCells(DataGridView dataGrid)
+        {
+            string s = Clipboard.GetText();
+            string[] lines = s.Split('\n');
+            int row = dataGrid.CurrentCell.RowIndex;
+            int col = dataGrid.CurrentCell.ColumnIndex;
+            string[] cells = lines[0].Split('\t');
+            int cellsSelected = cells.Length;
+            for (int i = 0; i < cellsSelected; i++)
+            {
+                if (col >= dataGrid.Columns.Count) { break; }
+                dataGrid[col, row].Value = cells[i];
+                col++;
+            }
+            if (row >= dataGrid.Rows.Count-1)
+            {
+                dataGrid.NotifyCurrentCellDirty(true);
+                dataGrid.EndEdit();
+                dataGrid.NotifyCurrentCellDirty(false);
+            }
+        }
+
+        private void HandleKeyDownDataGrid(KeyEventArgs e, DataGridView dataGrid)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                HandlePasteCells(dataGrid);
+            }
+            else if (e.Control && (e.KeyCode == Keys.D) || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            {
+                DeleteCells(dataGrid);
+            }
+        }
+
+        private void helmetsDataGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            HandleKeyDownDataGrid(e, helmetsDataGrid);
+        }
+
+        private void presetsDataGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            HandleKeyDownDataGrid(e, presetsDataGrid);
+        }
+
+        private void jerseysDataGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            HandleKeyDownDataGrid(e, jerseysDataGrid);
+        }
+
+        private void pantsDataGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            HandleKeyDownDataGrid(e, pantsDataGrid);
+        }
+
+        private void shoesDataGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            HandleKeyDownDataGrid(e, shoesDataGrid);
+        }
+
+        private void socksDataGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            HandleKeyDownDataGrid(e, socksDataGrid);
+        }
+
+        private void glovesDataGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            HandleKeyDownDataGrid(e, glovesDataGrid);
         }
     }
 }

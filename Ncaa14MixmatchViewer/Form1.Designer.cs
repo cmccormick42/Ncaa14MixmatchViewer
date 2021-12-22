@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ncaa14MixmatchViewer));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,8 +47,6 @@
             this.helmetBigfile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.helmetScene = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.helmetPresets = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jerseysDataGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,7 +93,6 @@
             this.fileSavedTxtBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.helmetsDataGrid)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.jerseysDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shoesDataGrid)).BeginInit();
@@ -219,24 +216,27 @@
             // 
             // helmetsDataGrid
             // 
+            this.helmetsDataGrid.AllowDrop = true;
             this.helmetsDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.helmetsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.helmetsDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.helmetsDataGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.helmetsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.helmetsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.helmetName,
             this.helmetBigfile,
             this.helmetScene,
             this.helmetPresets});
-            this.helmetsDataGrid.ContextMenuStrip = this.contextMenuStrip1;
             this.helmetsDataGrid.Location = new System.Drawing.Point(220, 58);
             this.helmetsDataGrid.Name = "helmetsDataGrid";
+            this.helmetsDataGrid.RowHeadersVisible = false;
             this.helmetsDataGrid.RowHeadersWidth = 60;
             this.helmetsDataGrid.RowTemplate.Height = 25;
             this.helmetsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.helmetsDataGrid.Size = new System.Drawing.Size(981, 150);
+            this.helmetsDataGrid.Size = new System.Drawing.Size(1015, 150);
             this.helmetsDataGrid.TabIndex = 15;
+            this.helmetsDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.helmetsDataGrid_KeyDown);
             // 
             // helmetName
             // 
@@ -266,20 +266,6 @@
             this.helmetPresets.MinimumWidth = 10;
             this.helmetPresets.Name = "helmetPresets";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
             // jerseysDataGrid
             // 
             this.jerseysDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -304,10 +290,12 @@
             this.hasBaseLayer});
             this.jerseysDataGrid.Location = new System.Drawing.Point(220, 239);
             this.jerseysDataGrid.Name = "jerseysDataGrid";
+            this.jerseysDataGrid.RowHeadersVisible = false;
             this.jerseysDataGrid.RowTemplate.Height = 25;
             this.jerseysDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.jerseysDataGrid.Size = new System.Drawing.Size(981, 150);
+            this.jerseysDataGrid.Size = new System.Drawing.Size(1015, 150);
             this.jerseysDataGrid.TabIndex = 16;
+            this.jerseysDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.jerseysDataGrid_KeyDown);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -422,10 +410,12 @@
             this.dataGridViewTextBoxColumn8});
             this.pantsDataGrid.Location = new System.Drawing.Point(220, 420);
             this.pantsDataGrid.Name = "pantsDataGrid";
+            this.pantsDataGrid.RowHeadersVisible = false;
             this.pantsDataGrid.RowTemplate.Height = 25;
             this.pantsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.pantsDataGrid.Size = new System.Drawing.Size(981, 150);
+            this.pantsDataGrid.Size = new System.Drawing.Size(1015, 150);
             this.pantsDataGrid.TabIndex = 17;
+            this.pantsDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pantsDataGrid_KeyDown);
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -464,10 +454,12 @@
             this.dataGridViewTextBoxColumn12});
             this.shoesDataGrid.Location = new System.Drawing.Point(220, 601);
             this.shoesDataGrid.Name = "shoesDataGrid";
+            this.shoesDataGrid.RowHeadersVisible = false;
             this.shoesDataGrid.RowTemplate.Height = 25;
             this.shoesDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.shoesDataGrid.Size = new System.Drawing.Size(981, 150);
+            this.shoesDataGrid.Size = new System.Drawing.Size(1015, 150);
             this.shoesDataGrid.TabIndex = 18;
+            this.shoesDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.shoesDataGrid_KeyDown);
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -506,10 +498,12 @@
             this.dataGridViewTextBoxColumn16});
             this.socksDataGrid.Location = new System.Drawing.Point(220, 782);
             this.socksDataGrid.Name = "socksDataGrid";
+            this.socksDataGrid.RowHeadersVisible = false;
             this.socksDataGrid.RowTemplate.Height = 25;
             this.socksDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.socksDataGrid.Size = new System.Drawing.Size(981, 150);
+            this.socksDataGrid.Size = new System.Drawing.Size(1015, 150);
             this.socksDataGrid.TabIndex = 19;
+            this.socksDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.socksDataGrid_KeyDown);
             // 
             // dataGridViewTextBoxColumn13
             // 
@@ -548,10 +542,12 @@
             this.dataGridViewTextBoxColumn20});
             this.glovesDataGrid.Location = new System.Drawing.Point(220, 963);
             this.glovesDataGrid.Name = "glovesDataGrid";
+            this.glovesDataGrid.RowHeadersVisible = false;
             this.glovesDataGrid.RowTemplate.Height = 25;
             this.glovesDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.glovesDataGrid.Size = new System.Drawing.Size(981, 150);
+            this.glovesDataGrid.Size = new System.Drawing.Size(1015, 150);
             this.glovesDataGrid.TabIndex = 20;
+            this.glovesDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.glovesDataGrid_KeyDown);
             // 
             // dataGridViewTextBoxColumn17
             // 
@@ -600,10 +596,12 @@
             this.name});
             this.presetsDataGrid.Location = new System.Drawing.Point(10, 58);
             this.presetsDataGrid.Name = "presetsDataGrid";
+            this.presetsDataGrid.RowHeadersVisible = false;
             this.presetsDataGrid.RowTemplate.Height = 25;
-            this.presetsDataGrid.Size = new System.Drawing.Size(204, 326);
+            this.presetsDataGrid.Size = new System.Drawing.Size(204, 331);
             this.presetsDataGrid.TabIndex = 22;
             this.presetsDataGrid.SelectionChanged += new System.EventHandler(this.presetsDataGrid_SelectionChanged);
+            this.presetsDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.presetsDataGrid_KeyDown);
             // 
             // name
             // 
@@ -625,13 +623,13 @@
             this.fileOpenTxtBox.Location = new System.Drawing.Point(404, 27);
             this.fileOpenTxtBox.Name = "fileOpenTxtBox";
             this.fileOpenTxtBox.ReadOnly = true;
-            this.fileOpenTxtBox.Size = new System.Drawing.Size(300, 23);
+            this.fileOpenTxtBox.Size = new System.Drawing.Size(379, 23);
             this.fileOpenTxtBox.TabIndex = 24;
             // 
             // fileSavedLabel
             // 
             this.fileSavedLabel.AutoSize = true;
-            this.fileSavedLabel.Location = new System.Drawing.Point(710, 30);
+            this.fileSavedLabel.Location = new System.Drawing.Point(789, 30);
             this.fileSavedLabel.Name = "fileSavedLabel";
             this.fileSavedLabel.Size = new System.Drawing.Size(62, 15);
             this.fileSavedLabel.TabIndex = 25;
@@ -639,10 +637,10 @@
             // 
             // fileSavedTxtBox
             // 
-            this.fileSavedTxtBox.Location = new System.Drawing.Point(778, 27);
+            this.fileSavedTxtBox.Location = new System.Drawing.Point(857, 27);
             this.fileSavedTxtBox.Name = "fileSavedTxtBox";
             this.fileSavedTxtBox.ReadOnly = true;
-            this.fileSavedTxtBox.Size = new System.Drawing.Size(367, 23);
+            this.fileSavedTxtBox.Size = new System.Drawing.Size(378, 23);
             this.fileSavedTxtBox.TabIndex = 26;
             // 
             // Ncaa14MixmatchViewer
@@ -671,13 +669,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.presetsLabel);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Ncaa14MixmatchViewer";
             this.Text = "NCAA14 Mixmatch Viewer";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.helmetsDataGrid)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.jerseysDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shoesDataGrid)).EndInit();
@@ -721,8 +719,6 @@
         private DataGridViewTextBoxColumn helmetBigfile;
         private DataGridViewTextBoxColumn helmetScene;
         private DataGridViewTextBoxColumn helmetPresets;
-        private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem deleteToolStripMenuItem;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

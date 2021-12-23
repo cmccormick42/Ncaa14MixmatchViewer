@@ -100,6 +100,9 @@ namespace Ncaa14MixmatchViewer
                 kerningTable = fontColorTexture = numberColorTexture = nameScaleAtMin = nameMinWidth = nameMaxWidth =
                     numberSpacingOne = uvSet = decalUv = hasBaseLayer = "";
 
+                // special var for glove animation
+                string museAnimation = "";
+
                 foreach (XmlNode child in childNodes)
                 {
                     switch (child.Name)
@@ -143,6 +146,9 @@ namespace Ncaa14MixmatchViewer
                         case "hasBaseLayer":
                             hasBaseLayer = child.Attributes["value"].Value;
                             break;
+                        case "MUSEAnimation":
+                            museAnimation = child.Attributes["value"].Value;
+                            break;
                         default:
                             continue;
                     }
@@ -167,6 +173,10 @@ namespace Ncaa14MixmatchViewer
                         decalUv,
                         hasBaseLayer
                     );
+                    continue;
+                } else if (museAnimation.Length > 0)
+                {
+                    dataGrid.Rows.Add(name, bigfile, scene, String.Join(',', presetsUsedIn), museAnimation);
                     continue;
                 }
 
@@ -199,9 +209,9 @@ namespace Ncaa14MixmatchViewer
                 node.SetAttribute("name", presetName);
                 rootElement.AppendChild(node);
             }
-            string[] partTypes = new string[] { "helmet", "jersey", "pants", "shoes", "socks", "gloves" };
+            string[] partTypes = new string[] { "helmet", "jersey", "pants", "socks", "shoes", "gloves" };
             DataGridView[] partsDataGrids = new[]{
-                    helmetsDataGrid, jerseysDataGrid, pantsDataGrid, shoesDataGrid, socksDataGrid, glovesDataGrid
+                    helmetsDataGrid, jerseysDataGrid, pantsDataGrid, socksDataGrid, shoesDataGrid, glovesDataGrid
             };
             // For each part, add a part node with proper child nodes.
             // Order: helmets, jerseys, pants, shoes, socks, gloves
@@ -214,6 +224,12 @@ namespace Ncaa14MixmatchViewer
                     if (row.Cells[0].Value == null) { continue; }
 
                     partNode.SetAttribute("name", row.Cells[0].Value.ToString());
+                    if (partTypes[partTypeIndex] == "jersey")
+                    {
+                        // Add the shade to the jersey
+                        // This has to be done before setting the type for some unknown reason
+                        partNode.SetAttribute("shade", row.Cells[4].Value.ToString());
+                    }
                     partNode.SetAttribute("type", partTypes[partTypeIndex]);
 
                     XmlElement bigfileNode = newXmlDoc.CreateElement("bigfile");
@@ -228,8 +244,6 @@ namespace Ncaa14MixmatchViewer
                     // We have to add special fields for jerseys.
                     if (partTypes[partTypeIndex] == "jersey")
                     {
-                        // Add the shade to the jersey
-                        partNode.SetAttribute("shade", row.Cells[4].Value.ToString());
                         XmlElement kerningTableElement = newXmlDoc.CreateElement("kerningTable");
                         kerningTableElement.SetAttribute("name", row.Cells[5].Value.ToString());
                         partNode.AppendChild(kerningTableElement);
@@ -242,6 +256,10 @@ namespace Ncaa14MixmatchViewer
                         numberColorTextureElement.SetAttribute("name", row.Cells[7].Value.ToString());
                         partNode.AppendChild(numberColorTextureElement);
 
+                        XmlElement numberSpacingOneElement = newXmlDoc.CreateElement("numberSpacingOne");
+                        numberSpacingOneElement.SetAttribute("value", row.Cells[11].Value.ToString());
+                        partNode.AppendChild(numberSpacingOneElement);
+
                         XmlElement nameScaleAtMinElement = newXmlDoc.CreateElement("nameScaleAtMin");
                         nameScaleAtMinElement.SetAttribute("value", row.Cells[8].Value.ToString());
                         partNode.AppendChild(nameScaleAtMinElement);
@@ -253,10 +271,6 @@ namespace Ncaa14MixmatchViewer
                         XmlElement nameMaxWidthElement = newXmlDoc.CreateElement("nameMaxWidth");
                         nameMaxWidthElement.SetAttribute("value", row.Cells[10].Value.ToString());
                         partNode.AppendChild(nameMaxWidthElement);
-
-                        XmlElement numberSpacingOneElement = newXmlDoc.CreateElement("numberSpacingOne");
-                        numberSpacingOneElement.SetAttribute("value", row.Cells[11].Value.ToString());
-                        partNode.AppendChild(numberSpacingOneElement);
 
                         object hasBaseLayer = row.Cells[14].Value;
                         if (hasBaseLayer != null && hasBaseLayer.ToString().Length > 0)
@@ -285,10 +299,11 @@ namespace Ncaa14MixmatchViewer
                     }
                     if (partTypes[partTypeIndex] == "jersey")
                     {
-                        XmlElement decalUvElement = newXmlDoc.CreateElement("decalUv");
+                        XmlElement decalUvElement = newXmlDoc.CreateElement("decalUV");
                         decalUvElement.SetAttribute("value", row.Cells[13].Value.ToString());
                         partNode.AppendChild(decalUvElement);
-                    }
+                    } else if (partTypes[partTypeIndex] == "gloves")
+
 
                     rootElement.AppendChild(partNode);
                 }

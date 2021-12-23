@@ -6,6 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>mm14.ico</ApplicationIcon>
+    <FileVersion>1.1.0</FileVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="mm14.ico" />
+  </ItemGroup>
 
 </Project>

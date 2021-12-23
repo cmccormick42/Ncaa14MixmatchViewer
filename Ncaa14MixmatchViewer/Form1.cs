@@ -302,7 +302,13 @@ namespace Ncaa14MixmatchViewer
                         XmlElement decalUvElement = newXmlDoc.CreateElement("decalUV");
                         decalUvElement.SetAttribute("value", row.Cells[13].Value.ToString());
                         partNode.AppendChild(decalUvElement);
-                    } else if (partTypes[partTypeIndex] == "gloves")
+                    } else if (partTypes[partTypeIndex] == "gloves" && row.Cells[4].Value.ToString().Length > 0)
+                    {
+
+                        XmlElement museAnimationElement = newXmlDoc.CreateElement("MUSEAnimation");
+                        museAnimationElement.SetAttribute("value", row.Cells[4].Value.ToString());
+                        partNode.AppendChild(museAnimationElement);
+                    }
 
 
                     rootElement.AppendChild(partNode);
@@ -342,15 +348,21 @@ namespace Ncaa14MixmatchViewer
             }
         }
 
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HandleSaveFile()
         {
-            if (saveFileDialog1.ShowDialog() != DialogResult.OK) {
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
+            {
                 MessageBox.Show("Error saving file");
                 return;
             }
 
             WriteToXml(saveFileDialog1.FileName);
             fileSavedTxtBox.Text = saveFileDialog1.FileName;
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HandleSaveFile();
         }
 
         private void toggleJerseyAdvanced_Click(object sender, EventArgs e)

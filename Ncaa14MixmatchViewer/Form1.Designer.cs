@@ -79,6 +79,11 @@
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.glovesDataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.museAnimation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toggleJerseyAdvanced = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.presetsDataGrid = new System.Windows.Forms.DataGridView();
@@ -87,11 +92,6 @@
             this.fileOpenTxtBox = new System.Windows.Forms.TextBox();
             this.fileSavedLabel = new System.Windows.Forms.Label();
             this.fileSavedTxtBox = new System.Windows.Forms.TextBox();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.museAnimation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.helmetsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jerseysDataGrid)).BeginInit();
@@ -235,7 +235,7 @@
             this.helmetsDataGrid.RowHeadersWidth = 60;
             this.helmetsDataGrid.RowTemplate.Height = 25;
             this.helmetsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.helmetsDataGrid.Size = new System.Drawing.Size(998, 150);
+            this.helmetsDataGrid.Size = new System.Drawing.Size(964, 150);
             this.helmetsDataGrid.TabIndex = 15;
             this.helmetsDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.helmetsDataGrid_KeyDown);
             // 
@@ -294,7 +294,7 @@
             this.jerseysDataGrid.RowHeadersVisible = false;
             this.jerseysDataGrid.RowTemplate.Height = 25;
             this.jerseysDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.jerseysDataGrid.Size = new System.Drawing.Size(998, 150);
+            this.jerseysDataGrid.Size = new System.Drawing.Size(964, 150);
             this.jerseysDataGrid.TabIndex = 16;
             this.jerseysDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.jerseysDataGrid_KeyDown);
             // 
@@ -414,7 +414,7 @@
             this.pantsDataGrid.RowHeadersVisible = false;
             this.pantsDataGrid.RowTemplate.Height = 25;
             this.pantsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.pantsDataGrid.Size = new System.Drawing.Size(998, 150);
+            this.pantsDataGrid.Size = new System.Drawing.Size(964, 150);
             this.pantsDataGrid.TabIndex = 17;
             this.pantsDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pantsDataGrid_KeyDown);
             // 
@@ -458,7 +458,7 @@
             this.shoesDataGrid.RowHeadersVisible = false;
             this.shoesDataGrid.RowTemplate.Height = 25;
             this.shoesDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.shoesDataGrid.Size = new System.Drawing.Size(998, 150);
+            this.shoesDataGrid.Size = new System.Drawing.Size(964, 150);
             this.shoesDataGrid.TabIndex = 18;
             this.shoesDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.shoesDataGrid_KeyDown);
             // 
@@ -502,7 +502,7 @@
             this.socksDataGrid.RowHeadersVisible = false;
             this.socksDataGrid.RowTemplate.Height = 25;
             this.socksDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.socksDataGrid.Size = new System.Drawing.Size(998, 150);
+            this.socksDataGrid.Size = new System.Drawing.Size(964, 150);
             this.socksDataGrid.TabIndex = 19;
             this.socksDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.socksDataGrid_KeyDown);
             // 
@@ -547,9 +547,39 @@
             this.glovesDataGrid.RowHeadersVisible = false;
             this.glovesDataGrid.RowTemplate.Height = 25;
             this.glovesDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.glovesDataGrid.Size = new System.Drawing.Size(998, 150);
+            this.glovesDataGrid.Size = new System.Drawing.Size(964, 150);
             this.glovesDataGrid.TabIndex = 20;
             this.glovesDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.glovesDataGrid_KeyDown);
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn17.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn18.HeaderText = "Bigfile";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn19.HeaderText = "Scene";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn20.HeaderText = "Presets Used In";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            // 
+            // museAnimation
+            // 
+            this.museAnimation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.museAnimation.HeaderText = "MUSEAnimation";
+            this.museAnimation.Name = "museAnimation";
             // 
             // toggleJerseyAdvanced
             // 
@@ -620,36 +650,6 @@
             this.fileSavedTxtBox.ReadOnly = true;
             this.fileSavedTxtBox.Size = new System.Drawing.Size(378, 23);
             this.fileSavedTxtBox.TabIndex = 26;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn17.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn18.HeaderText = "Bigfile";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn19.HeaderText = "Scene";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn20.HeaderText = "Presets Used In";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            // 
-            // museAnimation
-            // 
-            this.museAnimation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.museAnimation.HeaderText = "MUSEAnimation";
-            this.museAnimation.Name = "museAnimation";
             // 
             // Ncaa14MixmatchViewer
             // 

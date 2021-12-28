@@ -302,7 +302,8 @@ namespace Ncaa14MixmatchViewer
                         XmlElement decalUvElement = newXmlDoc.CreateElement("decalUV");
                         decalUvElement.SetAttribute("value", row.Cells[13].Value.ToString());
                         partNode.AppendChild(decalUvElement);
-                    } else if (partTypes[partTypeIndex] == "gloves" && row.Cells[4].Value.ToString().Length > 0)
+                    } else if (partTypes[partTypeIndex] == "gloves" && row.Cells[4].Value != null &&
+                        row.Cells[4].Value.ToString().Length > 0)
                     {
 
                         XmlElement museAnimationElement = newXmlDoc.CreateElement("MUSEAnimation");

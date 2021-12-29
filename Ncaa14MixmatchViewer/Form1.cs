@@ -203,7 +203,7 @@ namespace Ncaa14MixmatchViewer
             // Set the presets (officialTypes) next.
             foreach (DataGridViewRow item in presetsDataGrid.Rows)
             {
-                if (item.Cells[0].Value == null) { continue; }
+                if (item.Cells[0].Value == null || item.Cells[0].Value == "") { continue; }
                 string presetName = item.Cells[0].Value.ToString();
                 XmlElement node = newXmlDoc.CreateElement("officialType");
                 node.SetAttribute("name", presetName);
@@ -221,7 +221,7 @@ namespace Ncaa14MixmatchViewer
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
                     XmlElement partNode = newXmlDoc.CreateElement("part");
-                    if (row.Cells[0].Value == null) { continue; }
+                    if (row.Cells[0].Value == null || row.Cells[0].Value == "") { continue; }
 
                     partNode.SetAttribute("name", row.Cells[0].Value.ToString());
                     if (partTypes[partTypeIndex] == "jersey")

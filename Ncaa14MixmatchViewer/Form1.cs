@@ -289,13 +289,17 @@ namespace Ncaa14MixmatchViewer
                         // partNode.SetAttribute("shade", "light");
                         // Don't add the part here, it will get added outside the block.
                     }
-                    string[] presetsUsedIn = row.Cells[3].Value.ToString().Split(',');
-                    foreach (string preset in presetsUsedIn)
+                    object presetsUsedInValue = row.Cells[3].Value;
+                    if (presetsUsedInValue != null)
                     {
-                        XmlElement officialNode = newXmlDoc.CreateElement("official");
-                        if (preset.Length <= 0) { continue; }
-                        officialNode.SetAttribute("name", preset);
-                        partNode.AppendChild(officialNode);
+                        string[] presetsUsedIn = presetsUsedInValue.ToString().Split(',');
+                        foreach (string preset in presetsUsedIn)
+                        {
+                            XmlElement officialNode = newXmlDoc.CreateElement("official");
+                            if (preset.Length <= 0) { continue; }
+                            officialNode.SetAttribute("name", preset);
+                            partNode.AppendChild(officialNode);
+                        }
                     }
                     if (partTypes[partTypeIndex] == "jersey")
                     {

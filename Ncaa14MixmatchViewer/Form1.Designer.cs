@@ -185,7 +185,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(11, 371);
+            this.label3.Location = new System.Drawing.Point(11, 375);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 25);
             this.label3.TabIndex = 4;
@@ -195,7 +195,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(11, 733);
+            this.label4.Location = new System.Drawing.Point(11, 737);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 25);
             this.label4.TabIndex = 5;
@@ -205,7 +205,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(11, 552);
+            this.label5.Location = new System.Drawing.Point(11, 556);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 25);
             this.label5.TabIndex = 6;
@@ -215,7 +215,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(11, 914);
+            this.label6.Location = new System.Drawing.Point(11, 918);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 25);
             this.label6.TabIndex = 12;
@@ -226,6 +226,8 @@
             this.helmetsDataGrid.AllowDrop = true;
             this.helmetsDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.helmetsDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.helmetsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.helmetsDataGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.helmetsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.helmetsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -281,6 +283,8 @@
             this.jerseysDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.jerseysDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.jerseysDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.jerseysDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.jerseysDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
@@ -423,13 +427,15 @@
             this.pantsDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pantsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.pantsDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.pantsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pantsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pantsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
-            this.pantsDataGrid.Location = new System.Drawing.Point(11, 399);
+            this.pantsDataGrid.Location = new System.Drawing.Point(11, 403);
             this.pantsDataGrid.Name = "pantsDataGrid";
             this.pantsDataGrid.RowHeadersVisible = false;
             this.pantsDataGrid.RowTemplate.Height = 25;
@@ -471,13 +477,15 @@
             this.shoesDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.shoesDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.shoesDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.shoesDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.shoesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.shoesDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12});
-            this.shoesDataGrid.Location = new System.Drawing.Point(11, 580);
+            this.shoesDataGrid.Location = new System.Drawing.Point(11, 584);
             this.shoesDataGrid.Name = "shoesDataGrid";
             this.shoesDataGrid.RowHeadersVisible = false;
             this.shoesDataGrid.RowTemplate.Height = 25;
@@ -519,13 +527,15 @@
             this.socksDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.socksDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.socksDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.socksDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.socksDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.socksDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15,
             this.dataGridViewTextBoxColumn16});
-            this.socksDataGrid.Location = new System.Drawing.Point(11, 761);
+            this.socksDataGrid.Location = new System.Drawing.Point(11, 765);
             this.socksDataGrid.Name = "socksDataGrid";
             this.socksDataGrid.RowHeadersVisible = false;
             this.socksDataGrid.RowTemplate.Height = 25;
@@ -567,6 +577,8 @@
             this.glovesDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.glovesDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.glovesDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.glovesDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.glovesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.glovesDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn17,
@@ -574,7 +586,7 @@
             this.dataGridViewTextBoxColumn19,
             this.dataGridViewTextBoxColumn20,
             this.museAnimation});
-            this.glovesDataGrid.Location = new System.Drawing.Point(11, 942);
+            this.glovesDataGrid.Location = new System.Drawing.Point(11, 946);
             this.glovesDataGrid.Name = "glovesDataGrid";
             this.glovesDataGrid.RowHeadersVisible = false;
             this.glovesDataGrid.RowTemplate.Height = 25;

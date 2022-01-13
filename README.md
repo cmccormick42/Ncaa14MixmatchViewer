@@ -3,7 +3,7 @@ A utility to view and edit uniform mixmatch files for NCAA14.
 
 This is a C# Windows Forms Application that you can build using Visual Studio.
 
-![image](https://user-images.githubusercontent.com/47217759/149250817-8ebbce32-e3bf-4e15-ac84-f25994fc69c9.png)
+![image](https://user-images.githubusercontent.com/47217759/149251254-6e399dc1-2c5a-495e-9414-5881838c0a1b.png)
 
 # How to use
 - Launch the application.

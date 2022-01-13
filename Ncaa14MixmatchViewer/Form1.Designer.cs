@@ -648,6 +648,8 @@
             // 
             this.presetsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.presetsDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.presetsDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.presetsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.presetsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.presetsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name});

@@ -7,7 +7,7 @@ This is a C# Windows Forms Application that you can build using Visual Studio.
 
 # How to use
 - Launch the application.
-- From the File menu, select Load.
+- From the File menu, select Open.
 - Choose a valid mixmatch XML file from the dialog and click Open. Data will load into the tables.
 
 ## Viewing
@@ -22,6 +22,9 @@ There are also shortcuts for highlighted cells to simplify editing:
 - Ctrl+V: Pastes copied cells into the row starting at the selected cell (make sure only one cell is selected/blue before pasting)
 - Ctrl+D: Deletes the selected cells (only do this for cells in the same row)
 - Delete/Backspace: Same as above
+- Ctrl+R: Selects all cells in the currently selected row, including any hidden cells
+- Ctrl+O: Opens a new file
+- Ctrl+S: Saves the file
 
 Any rows that have a blank first column will not be written. This program does not do any kind of validation; make sure everything you enter is valid data.
 You can have two or more of this application open at once and copy/paste cells between them.
@@ -31,4 +34,4 @@ You can have two or more of this application open at once and copy/paste cells b
 - Enter in a file name or select an existing file.
 - Click Save.
 
-Your saved file should now be ready to be used in the AST file.
+Your saved file should now be ready to be used in the AST editor.

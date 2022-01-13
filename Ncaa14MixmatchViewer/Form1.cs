@@ -11,78 +11,7 @@ namespace Ncaa14MixmatchViewer
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openDialogMixmatch.ShowDialog() == DialogResult.OK)
-            {
-                fileOpenTxtBox.Text = openDialogMixmatch.FileName;
-                fileSavedTxtBox.Text = "";
-                DataGridView[] partsDataGrids = new[]{
-                    helmetsDataGrid, jerseysDataGrid, pantsDataGrid, shoesDataGrid, socksDataGrid, glovesDataGrid
-                };
-                foreach (DataGridView dataGrid in partsDataGrids)
-                {
-                    dataGrid.Rows.Clear();
-                }
-                presetsDataGrid.Rows.Clear();
-
-                // openDialogMixmatch.FileName
-                XmlDocument xmlDoc = new();
-                xmlDoc.Load(openDialogMixmatch.FileName);
-
-                // Get all of the preset names
-                string[] presetNames = new string[] { };
-                XmlNodeList presets = xmlDoc.GetElementsByTagName("officialType");
-                foreach (XmlNode preset in presets)
-                {
-                    string presetName = preset.Attributes["name"].Value;
-                    presetNames.Append(preset.Attributes["name"].Value);
-                    presetsDataGrid.Rows.Add(presetName);
-                }
-
-                // Get all of the parts
-                XmlNodeList parts = xmlDoc.GetElementsByTagName("part");
-                List<XmlNode> helmets = new List<XmlNode>();
-                List<XmlNode> jerseys = new List<XmlNode>();
-                List<XmlNode> pants = new List<XmlNode>();
-                List<XmlNode> socks = new List<XmlNode>();
-                List<XmlNode> shoes = new List<XmlNode>();
-                List<XmlNode> gloves = new List<XmlNode>();
-
-                foreach (XmlNode part in parts)
-                {
-                    if (part.Attributes["type"] == null) { continue; }
-                    switch (part.Attributes["type"].Value)
-                    {
-                        case "helmet":
-                            helmets.Add(part);
-                            break;
-                        case "jersey":
-                            jerseys.Add(part);
-                            break;
-                        case "pants":
-                            pants.Add(part);
-                            break;
-                        case "socks":
-                            socks.Add(part);
-                            break;
-                        case "shoes":
-                            shoes.Add(part);
-                            break;
-                        case "gloves":
-                            gloves.Add(part);
-                            break;
-                    }
-                }
-
-                AddParts(helmets, helmetsDataGrid);
-                AddParts(jerseys, jerseysDataGrid, true);
-                AddParts(pants, pantsDataGrid);
-                AddParts(socks, socksDataGrid);
-                AddParts(shoes, shoesDataGrid);
-                AddParts(gloves, glovesDataGrid);
-            } else
-            {
-                MessageBox.Show("Could not open file");
-            }
+            HandleOpenFile();
         }
 
         private void AddParts(List<XmlNode> parts, DataGridView dataGrid, bool isJersey = false)
@@ -184,7 +113,7 @@ namespace Ncaa14MixmatchViewer
             }
         }
 
-        private void WriteToXml(string fileName)
+        private Boolean WriteToXml(string fileName)
         {
             // Making the XML doc object
             XmlDocument newXmlDoc = new XmlDocument();
@@ -232,6 +161,26 @@ namespace Ncaa14MixmatchViewer
                     }
                     partNode.SetAttribute("type", partTypes[partTypeIndex]);
 
+                    if (row.Cells[1].Value == null || row.Cells[1].Value == "")
+                    {
+                        MessageBox.Show(
+                            "Bigfile is a required field, but is missing for one of your entries.",
+                            "Invalid Data",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Stop
+                        );
+                        return false;
+                    }
+                    if (row.Cells[2].Value == null || row.Cells[2].Value == "")
+                    {
+                        MessageBox.Show(
+                            "Scene is a required field, but is missing for one of your entries.",
+                            "Invalid Data",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Stop
+                        );
+                        return false;
+                    }
                     XmlElement bigfileNode = newXmlDoc.CreateElement("bigfile");
                     bigfileNode.SetAttribute("name", row.Cells[1].Value.ToString());
                     partNode.AppendChild(bigfileNode);
@@ -244,6 +193,32 @@ namespace Ncaa14MixmatchViewer
                     // We have to add special fields for jerseys.
                     if (partTypes[partTypeIndex] == "jersey")
                     {
+                        List<object> requiredJerseyValues = new List<object>()
+                        {
+                            row.Cells[5].Value,
+                            row.Cells[6].Value,
+                            row.Cells[7].Value,
+                            row.Cells[8].Value,
+                            row.Cells[9].Value,
+                            row.Cells[10].Value,
+                            row.Cells[11].Value,
+                            row.Cells[12].Value,
+                            row.Cells[13].Value
+                        };
+
+                        foreach (object value in requiredJerseyValues)
+                        {
+                            if (value == null || value.ToString().Length <= 0)
+                            {
+                                MessageBox.Show(
+                                    "Missing required jersey params. All of the advanced params except baseLayer are required.",
+                                    "Invalid Data",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Stop
+                                );
+                                return false;
+                            }
+                        }
                         XmlElement kerningTableElement = newXmlDoc.CreateElement("kerningTable");
                         kerningTableElement.SetAttribute("name", row.Cells[5].Value.ToString());
                         partNode.AppendChild(kerningTableElement);
@@ -322,6 +297,7 @@ namespace Ncaa14MixmatchViewer
             }
             newXmlDoc.AppendChild(rootElement);
             newXmlDoc.Save(fileName);
+            return true;
         }
 
         private void presetsDataGrid_SelectionChanged(object sender, EventArgs e)
@@ -353,15 +329,92 @@ namespace Ncaa14MixmatchViewer
             }
         }
 
+        private void HandleOpenFile()
+        {
+            if (openDialogMixmatch.ShowDialog() == DialogResult.OK)
+            {
+                fileOpenTxtBox.Text = openDialogMixmatch.FileName;
+                fileSavedTxtBox.Text = "";
+                DataGridView[] partsDataGrids = new[]{
+                    helmetsDataGrid, jerseysDataGrid, pantsDataGrid, shoesDataGrid, socksDataGrid, glovesDataGrid
+                };
+                foreach (DataGridView dataGrid in partsDataGrids)
+                {
+                    dataGrid.Rows.Clear();
+                }
+                presetsDataGrid.Rows.Clear();
+
+                // openDialogMixmatch.FileName
+                XmlDocument xmlDoc = new();
+                xmlDoc.Load(openDialogMixmatch.FileName);
+
+                // Get all of the preset names
+                string[] presetNames = new string[] { };
+                XmlNodeList presets = xmlDoc.GetElementsByTagName("officialType");
+                foreach (XmlNode preset in presets)
+                {
+                    string presetName = preset.Attributes["name"].Value;
+                    presetNames.Append(preset.Attributes["name"].Value);
+                    presetsDataGrid.Rows.Add(presetName);
+                }
+
+                // Get all of the parts
+                XmlNodeList parts = xmlDoc.GetElementsByTagName("part");
+                List<XmlNode> helmets = new List<XmlNode>();
+                List<XmlNode> jerseys = new List<XmlNode>();
+                List<XmlNode> pants = new List<XmlNode>();
+                List<XmlNode> socks = new List<XmlNode>();
+                List<XmlNode> shoes = new List<XmlNode>();
+                List<XmlNode> gloves = new List<XmlNode>();
+
+                foreach (XmlNode part in parts)
+                {
+                    if (part.Attributes["type"] == null) { continue; }
+                    switch (part.Attributes["type"].Value)
+                    {
+                        case "helmet":
+                            helmets.Add(part);
+                            break;
+                        case "jersey":
+                            jerseys.Add(part);
+                            break;
+                        case "pants":
+                            pants.Add(part);
+                            break;
+                        case "socks":
+                            socks.Add(part);
+                            break;
+                        case "shoes":
+                            shoes.Add(part);
+                            break;
+                        case "gloves":
+                            gloves.Add(part);
+                            break;
+                    }
+                }
+
+                AddParts(helmets, helmetsDataGrid);
+                AddParts(jerseys, jerseysDataGrid, true);
+                AddParts(pants, pantsDataGrid);
+                AddParts(socks, socksDataGrid);
+                AddParts(shoes, shoesDataGrid);
+                AddParts(gloves, glovesDataGrid);
+            }
+            else
+            {
+                MessageBox.Show("Could not open file");
+            }
+        }
+
         private void HandleSaveFile()
         {
-            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) { return; }
+
+            if (!WriteToXml(saveFileDialog1.FileName))
             {
                 MessageBox.Show("Error saving file");
                 return;
             }
-
-            WriteToXml(saveFileDialog1.FileName);
             fileSavedTxtBox.Text = saveFileDialog1.FileName;
         }
 
@@ -422,6 +475,18 @@ namespace Ncaa14MixmatchViewer
             else if (e.Control && (e.KeyCode == Keys.D) || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
             {
                 DeleteCells(dataGrid);
+            } else if (e.Control && e.KeyCode == Keys.R)
+            {
+                foreach (DataGridViewCell cell in dataGrid.Rows[dataGrid.SelectedCells[0].RowIndex].Cells)
+                {
+                    cell.Selected = true;
+                }
+            } else if (e.Control && e.KeyCode == Keys.O)
+            {
+                HandleOpenFile();
+            } else if (e.Control && e.KeyCode == Keys.S)
+            {
+                HandleSaveFile();
             }
         }
 
